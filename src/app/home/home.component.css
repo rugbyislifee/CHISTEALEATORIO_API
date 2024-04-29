@@ -1,0 +1,30 @@
+.tabla {
+    font-size: 170px; 
+    border: 10px solid #ccc;
+    margin: 00px;
+    padding: 20px;
+  }
+   
+/* Estilos para dispositivos de pantalla pequeña (móviles) */
+@media screen and (max-width: 767px) {
+    
+  }
+  
+  /* Estilos para tabletas */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    
+  }
+  
+  /* Estilos para dispositivos de pantalla grande (escritorio) */
+@media screen and (min-width: 992px) {
+    
+  }
+
+.btn-container {
+    display: flex; 
+  }
+  
+.btn-container button {
+    margin-right: 20px; 
+    margin-bottom: 20px;
+  }

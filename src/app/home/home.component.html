@@ -1,0 +1,43 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--
+<div>
+    <h2>Chiste al azar</h2>
+    <ul>
+        <li *ngFor="let item of data ">
+            {{item.joke}}
+        </li>
+    </ul>
+</div>
+-->
+
+<!--
+<button mat-raised-button (click)="llenardata()">Obtener Chiste</button>
+-->
+<div class="tabla">
+<div class="btn-container">
+<!--<button mat-raised-button color="primary" (click)="obtenerChistesFromLocalStorage()">Obtener Chiste de LS</button>-->
+<button mat-raised-button color="primary" (click)="agregarChiste()">Agregar Chiste Aleatorio</button>
+<button mat-raised-button color="primary" (click)="agregarNuevoChiste()">Agregar Nuevo Chiste</button>
+</div>
+<table mat-table [dataSource]="chistes" class="mat-elevation-z8">
+    <ng-container matColumnDef="chiste">
+        <th mat-header-cell *matHeaderCellDef>Chiste</th>
+        <td mat-cell *matCellDef="let chiste">{{ chiste }}</td>
+    </ng-container>
+    <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let chiste">
+            <button mat-flat-button color="primary" (click)="editarChiste(chiste)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="eliminarChiste(chiste)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+    <tr mat-row *matRowDef="let fila; columns: columnas;"></tr>
+</table>
+</div>
+
+
