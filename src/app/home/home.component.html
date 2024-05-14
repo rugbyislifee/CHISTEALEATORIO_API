@@ -13,31 +13,69 @@
 <!--
 <button mat-raised-button (click)="llenardata()">Obtener Chiste</button>
 -->
-<div class="tabla">
+
 <div class="btn-container">
-<!--<button mat-raised-button color="primary" (click)="obtenerChistesFromLocalStorage()">Obtener Chiste de LS</button>-->
-<button mat-raised-button color="primary" (click)="agregarChiste()">Agregar Chiste Aleatorio</button>
-<button mat-raised-button color="primary" (click)="agregarNuevoChiste()">Agregar Nuevo Chiste</button>
-</div>
-<table mat-table [dataSource]="chistes" class="mat-elevation-z8">
-    <ng-container matColumnDef="chiste">
-        <th mat-header-cell *matHeaderCellDef>Chiste</th>
-        <td mat-cell *matCellDef="let chiste">{{ chiste }}</td>
-    </ng-container>
-    <ng-container matColumnDef="acciones">
-        <th mat-header-cell *matHeaderCellDef>Acciones</th>
-        <td mat-cell *matCellDef="let chiste">
-            <button mat-flat-button color="primary" (click)="editarChiste(chiste)">
-                <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button color="warn" (click)="eliminarChiste(chiste)">
-                <mat-icon>delete</mat-icon>
-            </button>
-        </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
-    <tr mat-row *matRowDef="let fila; columns: columnas;"></tr>
-</table>
+    <!--<button mat-raised-button color="primary" (click)="obtenerChistesFromLocalStorage()">Obtener Chiste de LS</button>-->
+    <button mat-raised-button color="primary" (click)="agregarChiste()">Agregar Chiste Aleatorio</button>
+    <button mat-raised-button color="primary" (click)="agregarNuevoChiste()">Agregar Nuevo Chiste</button>
 </div>
 
+<div class="tabla">
+    <table mat-table [dataSource]="comida" class="mat-elevation-z8">
+      <!-- Columna ID -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let comida">{{ comida.id }}</td>
+      </ng-container>
+  
+      <!-- Columna Título -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Título</th>
+        <td mat-cell *matCellDef="let comida">{{ comida.title }}</td>
+      </ng-container>
+  
+      <!-- Columna Dificultad -->
+      <ng-container matColumnDef="difficulty">
+        <th mat-header-cell *matHeaderCellDef>Dificultad</th>
+        <td mat-cell *matCellDef="let comida">{{ comida.difficulty }}</td>
+      </ng-container>
+  
+      <!-- Columna Imagen -->
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef>Imagen</th>
+        <td mat-cell *matCellDef="let comida"><img [src]="comida.image" alt="" class="imagen"></td>
+      </ng-container>
+  
+      <!-- Fila de encabezados -->
+      <tr mat-header-row *matHeaderRowDef="columnasComidas"></tr>
+  
+      <!-- Fila de datos -->
+      <tr mat-row *matRowDef="let row; columns: columnasComidas;"></tr>
+    </table>
+
+    
+
+    <div class="formularioComida">
+    <p class="tituloFormularioComida">Agregar nuevo registro</p>
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+        <div class="campoComida">
+        <label>ID:</label>
+        <input type="text" formControlName="id">
+    </div>
+    <div class="campoComida">
+        <label>Título:</label>
+        <input type="text" formControlName="title">
+    </div> 
+    <div class="campoComida">
+        <label>Dificultad:</label>
+        <input type="text" formControlName="difficulty">
+    </div>
+    <div class="campoComida">
+        <label>URL de Imagen:</label>
+        <input type="text" formControlName="image">
+    </div> 
+        <button type="submit" [disabled]="formulario.invalid">Agregar</button>
+      </form>
+    </div>
+  </div>
 

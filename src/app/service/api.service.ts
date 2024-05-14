@@ -14,13 +14,26 @@ export class ApiService {
   public getApiData(): Observable<any> {
     let headers = new HttpHeaders({
       'X-RapidAPI-Key': 'b05bfabd40mshd9c0e902b224196p17a7a3jsnf259a191cb37',
-      'X-RapidAPI-Host': 'jokes-by-api-ninjas.p.rapidapi.com'
+      'X-RapidAPI-Host': 'low-carb-recipes.p.rapidapi.com'
     });
   
-    return this.http.get<any>('https://jokes-by-api-ninjas.p.rapidapi.com/v1/jokes', {
+    return this.http.get<any>('https://low-carb-recipes.p.rapidapi.com/random', {
       headers: headers 
     });
   }
+
+  public getListaComida(): Observable<any> {
+    let headers = new HttpHeaders({
+      'X-RapidAPI-Key': 'b05bfabd40mshd9c0e902b224196p17a7a3jsnf259a191cb37',
+      'X-RapidAPI-Host': 'the-vegan-recipes-db.p.rapidapi.com'
+    });
+  
+    return this.http.get<any>('https://the-vegan-recipes-db.p.rapidapi.com/', {
+      headers: headers 
+    });
+  }
+  
+
 
   /*
     public getApiData(): Observable<any> {
